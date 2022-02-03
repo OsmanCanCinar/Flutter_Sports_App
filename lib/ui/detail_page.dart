@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:sports_app/theme/app_colors.dart' as color;
+import 'package:sports_app/widgets/detail/lower/lower_page.dart';
+import 'package:sports_app/widgets/detail/upper/uppder_page.dart';
 
 class DetailPage extends StatefulWidget {
   const DetailPage({Key? key}) : super(key: key);
@@ -24,31 +26,9 @@ class _DetailPageState extends State<DetailPage> {
           ),
         ),
         child: Column(
-          children: [
-            Container(
-              padding: const EdgeInsets.fromLTRB(30, 70, 30, 0),
-              width: MediaQuery.of(context).size.width,
-              height: 300,
-              child: Column(
-                children: [
-                  Row(
-                    children: [
-                      Icon(
-                        Icons.arrow_back_ios,
-                        size: 20,
-                        color: color.AppColors.secondPageTopIconColor,
-                      ),
-                      const Spacer(),
-                      Icon(
-                        Icons.info_outline,
-                        size: 20,
-                        color: color.AppColors.secondPageTopIconColor,
-                      ),
-                    ],
-                  ),
-                ],
-              ),
-            ),
+          children: const [
+            UpperPage(),
+            LowerPage(),
           ],
         ),
       ),
