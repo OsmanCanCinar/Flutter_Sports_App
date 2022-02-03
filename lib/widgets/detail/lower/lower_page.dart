@@ -1,12 +1,15 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:sports_app/theme/app_colors.dart' as color;
 import 'package:sports_app/widgets/detail/lower/row_one.dart';
+import 'list_item.dart';
 
 class LowerPage extends StatefulWidget {
-  const LowerPage({
+  LowerPage({
+    required this.playArea,
     Key? key,
   }) : super(key: key);
+
+  bool playArea;
 
   @override
   State<LowerPage> createState() => _LowerPageState();
@@ -14,12 +17,19 @@ class LowerPage extends StatefulWidget {
 
 class _LowerPageState extends State<LowerPage> {
   List videoInfo = [];
+  late bool _playArea;
 
-  void _initData() {
-    DefaultAssetBundle.of(context)
+  initBool() {
+    _playArea =  widget.playArea;
+  }
+
+  void _initData() async {
+    await DefaultAssetBundle.of(context)
         .loadString('assets/json/videoinfo.json')
         .then((value) {
-      videoInfo = json.decode(value);
+      setState(() {
+        videoInfo = json.decode(value);
+      });
     });
   }
 
@@ -27,6 +37,7 @@ class _LowerPageState extends State<LowerPage> {
   void initState() {
     super.initState();
     _initData();
+    initBool();
   }
 
   @override
@@ -41,27 +52,26 @@ class _LowerPageState extends State<LowerPage> {
         ),
         child: Column(
           children: [
-            SizedBox(height: 30),
-            RowOne(),
+            const SizedBox(height: 30),
+            const RowOne(),
+            const SizedBox(height: 20),
             Expanded(
-                child: ListView.builder(
-                  itemCount: videoInfo.length,
-                  itemBuilder: (context, index) {
-                    return GestureDetector(
-                      onTap: () {
-
-                      },
-                      child: Container(
-                        height: 135,
-                          child: Column(
-                            children: [
-
-                            ],
-                          ),
-                      ),
-                    );
-                  },
-                ),
+              child: ListView.builder(
+                padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
+                itemCount: videoInfo.length,
+                itemBuilder: (_, int index) {
+                  return GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        if(!_playArea) {
+                          _playArea = true;
+                        }
+                      });
+                    },
+                    child: ListItem(videoInfo: videoInfo, index: index),
+                  );
+                },
+              ),
             ),
           ],
         ),

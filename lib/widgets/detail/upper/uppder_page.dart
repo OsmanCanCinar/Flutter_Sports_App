@@ -28,8 +28,8 @@ class UpperPage extends StatelessWidget {
           Row(
             children: const [
               TagWidget(text: 'Weight Lifting'),
-              Spacer(),
-              TagWidget(text: 'CrossFit'),
+              SizedBox(width: 15),
+              TagWidget(text: 'CrossFit Wod'),
             ],
           ),
         ],

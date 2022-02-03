@@ -26,13 +26,14 @@ class TagWidget extends StatelessWidget {
         ),
       ),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Icon(
             Icons.sports,
             size: 20,
             color: color.AppColors.secondPageTopIconColor,
           ),
+
           Text(
             text,
             style: TextStyle(

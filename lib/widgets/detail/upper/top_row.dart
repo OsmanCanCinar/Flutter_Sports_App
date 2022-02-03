@@ -24,7 +24,7 @@ class TopRow extends StatelessWidget {
         const Spacer(),
         Icon(
           Icons.info_outline,
-          size: 20,
+          size: 25,
           color: color.AppColors.secondPageTopIconColor,
         ),
       ],

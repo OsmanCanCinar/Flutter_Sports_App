@@ -1,7 +1,5 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:sports_app/theme/app_colors.dart' as color;
-
 import 'list_item.dart';
 
 class BodyParts extends StatefulWidget {
@@ -14,14 +12,15 @@ class BodyParts extends StatefulWidget {
 }
 
 class _BodyPartsState extends State<BodyParts> {
-
   List info = [];
 
   void _initData() {
     DefaultAssetBundle.of(context)
         .loadString('assets/json/info.json')
         .then((value) {
-      info = json.decode(value);
+      setState(() {
+        info = json.decode(value);
+      });
     });
   }
 
@@ -37,7 +36,6 @@ class _BodyPartsState extends State<BodyParts> {
       child: ListView.builder(
         itemCount: (info.length.toDouble() / 2).toInt(),
         itemBuilder: (_, index) {
-
           int a = 2 * index;
           int b = a + 1;
 

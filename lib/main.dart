@@ -5,7 +5,15 @@ import 'package:get/get.dart';
 import 'package:sports_app/ui/home_page.dart';
 
 void main() {
-  runApp(_devicePreview());
+  //runApp(_devicePreview());
+  runApp(_myApp());
+}
+
+GetMaterialApp _myApp() {
+  return const GetMaterialApp(
+    debugShowCheckedModeBanner: false,
+    home: HomePage(),
+  );
 }
 
 DevicePreview _devicePreview() {
