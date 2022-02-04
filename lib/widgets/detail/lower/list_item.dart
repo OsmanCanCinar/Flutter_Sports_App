@@ -32,15 +32,17 @@ class ListItem extends StatelessWidget {
                       fit: BoxFit.cover),
                 ),
               ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 5),
               Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.min,
                 children: [
                   Text(
                     videoInfo[index]['title'],
                     style: const TextStyle(
-                      fontSize: 18,
+                      fontSize: 15,
+                      overflow: TextOverflow.fade,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
@@ -78,7 +80,7 @@ class ListItem extends StatelessWidget {
               const SizedBox(width: 15),
               Row(
                 children: [
-                  for(int i = 0; i < 70; i++)
+                  for(int i = 0; i < 60; i++)
                   i.isEven?Container(
                     width: 3,
                     height: 1,
